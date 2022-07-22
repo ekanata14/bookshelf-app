@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"         content="width=device-width, initial-scale=1.0">
+  <title>Todo Apps</title>
+  <link rel="stylesheet" href="css/style_2.css">
+  <script src="https://kit.fontawesome.com/88f7f8719e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<header>
+  <h1>DreamerLib</h1>
+</header>
+
+<div class="wrapper">
+  <div class="container bg-white shadow" id="add-todo">
+    <h2 class="container-header text-center">Tambah Buku</h2>
+    <form class="form" action="#" id="form">
+      <div class="form-group form-title">
+        <label for="title">Judul Buku</label>
+        <input type="text" id="book-title" name="title" required>
+      </div>
+      <div class="form-group form-title">
+        <label for="author">Penulis</label>
+        <input type="text" id="book-author" name="bookAuthor" required>
+      </div>
+      <div class="form-group form-title">
+        <label for="year">Tahun Rilis</label>
+        <input type="text" id="year-released" name="bookYear" required>
+      </div>
+      <input type="submit" value="Submit" name="Submit" class="btn-submit">
+    </form>
+    
+</div>
+<div class="book-background">
+  <img src="assets/book-background.png" alt="book-background">
+</div>
+<div class="flex-row">
+  <div class="container">
+    <h2 class="container-header">Koleksi Buku (Belum Selesai)</h2>
+
+    <div class="list-item" id="books">
+
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 class="container-header">Koleksi Buku (Sudah Selesai)</h2>
+
+    <div class="list-item" id="completed-books">
+      
+    </div>
+  </div>
+</div>
+</div>
+<script src="js/script_fix.js"></script>
+</body>
+</html>
