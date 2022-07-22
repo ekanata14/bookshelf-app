@@ -9,6 +9,7 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    position: relative;
 }
 
 header {
@@ -43,11 +44,11 @@ header {
 }
 
 .book-background img{
-    height: 1600px;
-    width: 1600px;
+    height: 1700px;
+    width: 1350px;
     position: absolute;
     top:400px;
-    left: 615px;
+    left: -65px;
     z-index: -99;
 }
 
@@ -215,11 +216,25 @@ input[type=text], input[type=date], .btn-submit:focus {
         width: 100%;
     }
 
+    .flex-row{
+        flex-direction: column;
+    }
+
     .list-item {
         width: 90%;
+        gap:0 50px;
+        width: 600px;
+    }
+
+    .item{
+        width: 100%;
     }
 
     .form {
         width: 100%;
+    }
+
+    .book-background img{
+        display: none;
     }
 }
