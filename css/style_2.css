@@ -33,7 +33,7 @@ header {
     border-radius: 8px;
     margin: 52px 0 52px 0;
     /* background: #F8F9FA; */
-    padding: 16px;
+    /* padding: 16px; */
     flex-grow: 1;
     height: fit-content;
 }
@@ -43,6 +43,10 @@ header {
     font-size: 28px;
 }
 
+.book-lists{
+    padding: 285px 16px 16px 92px;
+}
+
 .book-background img{
     height: 1700px;
     width: 1350px;
@@ -50,11 +54,17 @@ header {
     top:400px;
     left: -65px;
     z-index: -99;
+    display: none;
 }
 
 .flex-row{
     display: flex;
     flex-direction: row;
+    background-image: url(../assets/book-background-1500.png);
+    width: 1500px;
+    height: 1700px;
+    background-repeat: no-repeat;
+    background-position: top;
 }
 
 .list-item{
