@@ -103,7 +103,20 @@ document.addEventListener("DOMContentLoaded", function(){
                 addBookToCompleted(bookObject.id);
             });
 
-            container.append(checkButton);
+            const trashButton = document.createElement("i");
+            trashButton.classList.add("fa" , "fa-solid", "fa-trash");
+            
+            trashButton.addEventListener("click", function(){
+                removeBookFromCompleted(bookObject.id);                
+            });
+
+            const buttons = document.createElement("div");
+            buttons.classList.add("buttons-container");
+            buttons.append(checkButton, trashButton);
+
+            
+
+            container.append(buttons);
         }
         return container;
     }
