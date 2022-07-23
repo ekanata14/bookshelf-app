@@ -186,7 +186,7 @@ input{
     font-size: 28px;
     border: none;
     border-radius: 16px;
-    margin-bottom: 200px;
+    margin-bottom: 0;
     position: relative;
     bottom: 200px;
     cursor: pointer;
@@ -212,8 +212,6 @@ input, .btn-submit:focus {
 
 .fa-check {
     font-size: 28px;
-
-    /* background: url('../assets/check-outline.svg'); */
     background-size: contain;
     background-color: transparent;
     cursor: pointer;
@@ -222,14 +220,11 @@ input, .btn-submit:focus {
 }
 
 .fa-check:hover {
-    /* background: url('../assets/check-solid.svg'); */
     background-size: contain;
 }
 
 .fa-trash {
     font-size: 28px;
-
-    /* background: url('../assets/trash-outline.svg'); */
     background-size: contain;
     margin-left: 16px;
     cursor: pointer;
@@ -237,28 +232,23 @@ input, .btn-submit:focus {
 }
 
 .fa-trash:hover {
-    /* background: url('../assets/trash-fill.svg'); */
     background-size: contain;
 }
 
 .fa-rotate-left {
     font-size: 28px;
-
-    /* background: url('../assets/undo-ouline.svg'); */
     background-size: contain;
     cursor: pointer;
     border: none;
 }
 
 .fa-rotate-left:hover {
-    /* background: url('../assets/undo-ouline.svg'); */
     background-size: contain;
 }
 
 .fa-check:focus, .fa-trash {
     outline: none;
 }
-
 
 @media only screen and (max-width: 1024px) {    
     .padding-20-x{
@@ -296,10 +286,6 @@ input, .btn-submit:focus {
 
     .form {
         width: 100%;
-    }
-
-    .book-background img{
-        display: none;
     }
 
     .search-books-container{

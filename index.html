@@ -5,87 +5,81 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport"         content="width=device-width, initial-scale=1.0">
   <title>DreamerLib</title>
-  <link rel="stylesheet" href="css/style_2.css">
+  <link rel="stylesheet" href="css/style.css">
   <script src="https://kit.fontawesome.com/88f7f8719e.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-<header>
-  <h1>DreamerLib</h1>
-</header>
-
-<div class="wrapper">
-  <div class="container bg-white shadow padding-20-x" id="add-todo">
-    <h2 class="container-header text-center">Tambah Buku</h2>
-    <form class="form" action="#" id="form">
-      <div class="form-group form-title">
-        <label for="title">Judul Buku</label>
-        <input type="text" id="book-title" name="title" required>
-      </div>
-      <div class="form-group form-title">
-        <label for="author">Penulis</label>
-        <input type="text" id="book-author" name="bookAuthor" required>
-      </div>
-      <div class="form-group form-title">
-        <label for="year">Tahun Rilis</label>
-        <input type="number" id="year-released" name="bookYear" min="0" required>
-      </div>
-      <input type="submit" value="Submit" name="Submit" class="btn-submit">
-    </form>
-  </div>
-  <h2 class="container-header text-center">Search Books</h2>
-  <div class="search-books-container">
-    <div class="search-books">
-      <input type="text" id="search-book" onkeyup="searchFunction()">
-      <p>*Cari berdasarkan judul buku dan lihat pada koleksi buku</p>
-    </div>  
-  </div>
-
-<div class="book-background">
-  <img src="assets/book-background.png" alt="book-background">
-</div>
-<div class="flex-row">
-  <div class="container book-lists">
-    <h2 class="container-header">Koleksi Buku (Belum Selesai)</h2>
-
-    <div class="list-item" id="books">
-
+  <header>
+    <h1>DreamerLib</h1>
+  </header>
+  <div class="wrapper">
+    <div class="container bg-white padding-20-x" id="add-book">
+      <h2 class="container-header text-center">Tambah Buku</h2>
+      <form class="form" action="#" id="form">
+        <div class="form-group form-title">
+          <label for="title">Judul Buku</label>
+          <input type="text" id="book-title" name="title" required>
+        </div>
+        <div class="form-group form-title">
+          <label for="author">Penulis</label>
+          <input type="text" id="book-author" name="bookAuthor" required>
+        </div>
+        <div class="form-group form-title">
+          <label for="year">Tahun Rilis</label>
+          <input type="number" id="year-released" name="bookYear" min="0" required>
+        </div>
+        <input type="submit" value="Submit" name="Submit" class="btn-submit">
+      </form>
     </div>
-  </div>
-
-  <div class="container book-lists">
-    <h2 class="container-header">Koleksi Buku (Sudah Selesai)</h2>
-
-    <div class="list-item" id="completed-books">
-      
+    <h2 class="container-header text-center">Search Books</h2>
+    <div class="search-books-container">
+      <div class="search-books">
+        <input type="text" id="search-book" onkeyup="searchFunction()">
+        <p>*Cari berdasarkan judul buku dan lihat pada koleksi buku</p>
+      </div>  
     </div>
-  </div>
-</div>
+    <div class="flex-row">
+      <div class="container book-lists">
+        <h2 class="container-header">Koleksi Buku (Belum Selesai)</h2>
 
-<button id="clear-books">Clear All Books</button>
-</div>
-<script src="js/script_fix.js"></script>
-<script>
-      function searchFunction() {
-        // Declare variables
-        let input, filter, bookList, li, a, i, txtValue;
-        input = document.getElementById('search-book');
-        filter = input.value.toUpperCase();
-        bookList = document.getElementById("book-ul");
-        bookItem = document.getElementsByTagName('section');
-        bookItemContainer = document.getElementsByClassName("item");
-      
-        // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < bookItem.length; i++) {
-          a = bookItem[i].getElementsByTagName("a")[0];
-          txtValue = a.textContent || a.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            bookItemContainer[i].style.display = "";
-          } else {
-            bookItemContainer[i].style.display = "none";
+        <div class="list-item" id="books">
+
+        </div>
+      </div>
+
+      <div class="container book-lists">
+        <h2 class="container-header">Koleksi Buku (Sudah Selesai)</h2>
+
+        <div class="list-item" id="completed-books">
+          
+        </div>
+      </div>
+    </div>
+
+    <button id="clear-books">Clear All Books</button>
+    </div>
+    <script src="js/script.js"></script>
+    <script>
+          function searchFunction() {
+            // Deklarasi Variable
+            let input, filter, bookList, bookItem, bookItemContainer, i, txtValue;
+            input = document.getElementById('search-book');
+            filter = input.value.toUpperCase();
+            bookList = document.getElementById("book-ul");
+            bookItem = document.getElementsByTagName('section');
+            bookItemContainer = document.getElementsByClassName("item");
+          
+            // Looping ke semua items dan menghilangkan yang tidak sesuai dengan pencarian
+            for (i = 0; i < bookItem.length; i++) {
+              a = bookItem[i].getElementsByTagName("a")[0];
+              txtValue = a.textContent || a.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                bookItemContainer[i].style.display = "";
+              } else {
+                bookItemContainer[i].style.display = "none";
+              }
+            }
           }
-        }
-      }
-</script>
+    </script>
 </body>
 </html>

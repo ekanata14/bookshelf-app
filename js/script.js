@@ -150,13 +150,10 @@ document.addEventListener("DOMContentLoaded", function(){
             document.dispatchEvent(new Event(RENDER_EVENT));    
             window.location.reload();
         }
-        // saveData();
     });
 
     // Listener untuk merender buku
     document.addEventListener(RENDER_EVENT, function(){
-        // console.log(books);
-
         const uncompletedBook = document.getElementById("books");
         uncompletedBook.innerHTML = "";
 
@@ -176,7 +173,6 @@ document.addEventListener("DOMContentLoaded", function(){
     // Fungsi untuk save data
     function saveData(){
         if(isStorageExist()){
-            // loadDataFromStorage();
             const parsed = JSON.stringify(books);
             localStorage.setItem(STORAGE_KEY, parsed);
             document.dispatchEvent(new Event(SAVED_EVENT));
@@ -199,10 +195,6 @@ document.addEventListener("DOMContentLoaded", function(){
     // Custom Event untuk mengetahui perubahan data
     document.addEventListener(SAVED_EVENT, function(){
         let bookItem = JSON.parse((localStorage.getItem(STORAGE_KEY)));
-        for(item in bookItem){
-            console.log(bookItem[item].id);
-        }
-        
         console.log(bookItem[item].isCompleted);
     });
 
@@ -222,5 +214,4 @@ document.addEventListener("DOMContentLoaded", function(){
     if(isStorageExist()){
         loadDataFromStorage();
     }
-
 });
