@@ -55,7 +55,8 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     // FUngsi untuk membuat todo agar bisa tampil di HTML
     function makeBook(bookObject){
-        const bookTitle = document.createElement("h2");
+        const bookTitle = document.createElement("a");
+        bookTitle.setAttribute("id", "book-title");
         bookTitle.innerText = bookObject.title;
 
         const bookAuthor = document.createElement("h3");
@@ -64,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function(){
         const bookYear = document.createElement("p");
         bookYear.innerText = bookObject.year;
 
-        const bookContainer = document.createElement("div");
+        const bookContainer = document.createElement("section");
         bookContainer.classList.add('inner');
         bookContainer.append(bookTitle, bookAuthor, bookYear);
 
@@ -139,6 +140,35 @@ document.addEventListener("DOMContentLoaded", function(){
         document.dispatchEvent(new Event(RENDER_EVENT));;
         saveData();
     }
+
+    // Fungsi untuk mencari buku
+    // function searchFunction() {
+    //     // Declare variables
+    //     let input, filter, bookList, li, a, i, txtValue;
+    //     input = document.getElementById('search-book');
+    //     filter = input.value.toUpperCase();
+    //     bookList = document.getElementById("book-ul");
+    //     bookItem = bookList.getElementsByTagName('div');
+      
+    //     // Loop through all list items, and hide those who don't match the search query
+    //     for (i = 0; i < bookItem.length; i++) {
+    //       a = bookItem[i].getElementById("book-title")[0];
+    //       txtValue = a.textContent || a.innerText;
+    //       if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //         bookItem[i].style.display = "";
+    //       } else {
+    //         bookItem[i].style.display = "none";
+    //       }
+    //     }
+    //   }
+
+    // Fungsi untuk menghapus buku
+    const removeBooks = document.getElementById("clear-books");
+    removeBooks.addEventListener("click", function(){
+        localStorage.removeItem(STORAGE_KEY);
+        document.dispatchEvent(new Event(RENDER_EVENT))
+        saveData();
+    });
 
     // Listener untuk merender todo
     document.addEventListener(RENDER_EVENT, function(){

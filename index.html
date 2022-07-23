@@ -32,8 +32,13 @@
       </div>
       <input type="submit" value="Submit" name="Submit" class="btn-submit">
     </form>
-    
-</div>
+  </div>
+  <div class="search-books">
+    <h3>Search Books</h3>
+    <input type="text" id="search-book" onkeyup="searchFunction()">
+    <p>*Cari berdasarkan judul buku dan lihat pada koleksi buku</p>
+  </div>
+
 <div class="book-background">
   <img src="assets/book-background.png" alt="book-background">
 </div>
@@ -54,7 +59,31 @@
     </div>
   </div>
 </div>
+
+<button id="clear-books">Clear All Books</button>
 </div>
 <script src="js/script_fix.js"></script>
+<script>
+      function searchFunction() {
+        // Declare variables
+        let input, filter, bookList, li, a, i, txtValue;
+        input = document.getElementById('search-book');
+        filter = input.value.toUpperCase();
+        bookList = document.getElementById("book-ul");
+        bookItem = document.getElementsByTagName('section');
+        bookItemContainer = document.getElementsByClassName("item");
+      
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < bookItem.length; i++) {
+          a = bookItem[i].getElementsByTagName("a")[0];
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            bookItemContainer[i].style.display = "";
+          } else {
+            bookItemContainer[i].style.display = "none";
+          }
+        }
+      }
+</script>
 </body>
 </html>
