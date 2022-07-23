@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
     const books = [];
-    const RENDER_EVENT = 'render-todo';
+    const RENDER_EVENT = 'render-book';
 
     const submitForm = document.getElementById("form");
     submitForm.addEventListener("submit", function(event){
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
         addBook();  
     });
 
-    // Fungsi untuk menambahkan todo
+    // Fungsi untuk menambahkan buku
     function addBook(){
         const bookTitle = document.getElementById("book-title").value;
         const bookAuthor = document.getElementById("book-author").value;
@@ -28,12 +28,12 @@ document.addEventListener("DOMContentLoaded", function(){
         return +new Date();
     }
     
-    // Fungsi untuk membuat todo object
+    // Fungsi untuk membuat objek buku
     function generateBookObject(id, title, author, year, isCompleted){
         return {id, title, author, year, isCompleted};
     }
 
-    // Fungsi untuk mencari todo
+    // Fungsi untuk mencari buku
     function findBook(bookId){
         for(const bookItem of books){
             if(bookItem.id === bookId){
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function(){
         return null;
     }
 
-    // Fungsi untuk mencari angka index todo
+    // Fungsi untuk mencari angka index buku
     function findBookIndex(bookId){
         for(const index in books){
             if(books[index].id === bookId){
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
         return -1;
     }
-    // FUngsi untuk membuat todo agar bisa tampil di HTML
+    // Fungsi untuk membuat buku agar bisa tampil di HTML
     function makeBook(bookObject){
         const bookTitle = document.createElement("a");
         bookTitle.setAttribute("id", "book-title");
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function(){
         return container;
     }
     
-    // Fungsi untuk menambahkan todo ke tempat yang sudah selesai
+    // Fungsi untuk menambahkan buku ke tempat yang sudah selesai
     function addBookToCompleted(bookId){
         const bookTarget= findBook(bookId);
 
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function(){
         saveData();
     }
 
-    // Fungsi untuk menghapus todo
+    // Fungsi untuk menghapus buku
     function removeBookFromCompleted(bookId){
         const bookTarget = findBookIndex(bookId);
 
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function(){
         saveData();
     }
 
-    // Fungsi untuk mengembalikan todo ke tempat yang harus dilakukan
+    // Fungsi untuk mengembalikan buku ke tempat yang harus dilakukan
     function undoTaskFromCompleted(bookId){
         const bookTarget = findBook(bookId);
 
@@ -141,36 +141,19 @@ document.addEventListener("DOMContentLoaded", function(){
         saveData();
     }
 
-    // Fungsi untuk mencari buku
-    // function searchFunction() {
-    //     // Declare variables
-    //     let input, filter, bookList, li, a, i, txtValue;
-    //     input = document.getElementById('search-book');
-    //     filter = input.value.toUpperCase();
-    //     bookList = document.getElementById("book-ul");
-    //     bookItem = bookList.getElementsByTagName('div');
-      
-    //     // Loop through all list items, and hide those who don't match the search query
-    //     for (i = 0; i < bookItem.length; i++) {
-    //       a = bookItem[i].getElementById("book-title")[0];
-    //       txtValue = a.textContent || a.innerText;
-    //       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-    //         bookItem[i].style.display = "";
-    //       } else {
-    //         bookItem[i].style.display = "none";
-    //       }
-    //     }
-    //   }
-
     // Fungsi untuk menghapus buku
-    const removeBooks = document.getElementById("clear-books");
+    const removeBooks = document.querySelector("#clear-books");
     removeBooks.addEventListener("click", function(){
-        localStorage.removeItem(STORAGE_KEY);
-        document.dispatchEvent(new Event(RENDER_EVENT))
-        saveData();
+        const removeAllNotif = confirm("Apakah Anda yakin ingin menghapus semua buku?");
+        if(removeAllNotif == true){
+            localStorage.clear(STORAGE_KEY);
+            document.dispatchEvent(new Event(RENDER_EVENT));    
+            window.location.reload();
+        }
+        // saveData();
     });
 
-    // Listener untuk merender todo
+    // Listener untuk merender buku
     document.addEventListener(RENDER_EVENT, function(){
         // console.log(books);
 
@@ -181,11 +164,11 @@ document.addEventListener("DOMContentLoaded", function(){
         completedBook.innerHTML = "";
 
         for(const bookItem of books){
-            const todoElement = makeBook(bookItem);
+            const bookElement = makeBook(bookItem);
             if(!bookItem.isCompleted){
-                uncompletedBook.append(todoElement);
+                uncompletedBook.append(bookElement);
             } else{
-                completedBook.append(todoElement);
+                completedBook.append(bookElement);
             }
         }
     });
@@ -200,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
-    const SAVED_EVENT = 'saved-todo';
+    const SAVED_EVENT = 'saved-book';
     const STORAGE_KEY = 'BOOK_APPS';
 
     // Fungsi untuk mengecek apakah browser mendukung web storage
@@ -229,8 +212,8 @@ document.addEventListener("DOMContentLoaded", function(){
         let data = JSON.parse(serializedData);
 
         if(data !== null){
-            for(const todo of data){
-                books.push(todo);
+            for(const book of data){
+                books.push(book);
             }
         }
         document.dispatchEvent(new Event(RENDER_EVENT));

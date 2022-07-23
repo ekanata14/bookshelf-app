@@ -15,7 +15,7 @@
 </header>
 
 <div class="wrapper">
-  <div class="container bg-white shadow" id="add-todo">
+  <div class="container bg-white shadow padding-20-x" id="add-todo">
     <h2 class="container-header text-center">Tambah Buku</h2>
     <form class="form" action="#" id="form">
       <div class="form-group form-title">
@@ -28,15 +28,17 @@
       </div>
       <div class="form-group form-title">
         <label for="year">Tahun Rilis</label>
-        <input type="text" id="year-released" name="bookYear" required>
+        <input type="number" id="year-released" name="bookYear" required>
       </div>
       <input type="submit" value="Submit" name="Submit" class="btn-submit">
     </form>
   </div>
-  <div class="search-books">
-    <h3>Search Books</h3>
-    <input type="text" id="search-book" onkeyup="searchFunction()">
-    <p>*Cari berdasarkan judul buku dan lihat pada koleksi buku</p>
+  <h2 class="container-header text-center">Search Books</h2>
+  <div class="search-books-container">
+    <div class="search-books">
+      <input type="text" id="search-book" onkeyup="searchFunction()">
+      <p>*Cari berdasarkan judul buku dan lihat pada koleksi buku</p>
+    </div>  
   </div>
 
 <div class="book-background">
