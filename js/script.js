@@ -191,12 +191,6 @@ document.addEventListener("DOMContentLoaded", function(){
             return true;
         }
     }
-    
-    // Custom Event untuk mengetahui perubahan data
-    document.addEventListener(SAVED_EVENT, function(){
-        let bookItem = JSON.parse((localStorage.getItem(STORAGE_KEY)));
-        console.log(bookItem[item].isCompleted);
-    });
 
     // Fungsi untuk mengambil data dari local storage untuk ditampilkan pada tampilan
     function loadDataFromStorage(){
